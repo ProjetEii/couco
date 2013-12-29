@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <link href='/stylesheets/template.css' rel='stylesheet' type='text/css' />
+        <link href="/stylesheets/bootstrap-modal.css" rel="stylesheet"/>
+        <link href="/stylesheets/jquery-ui-1.10.3.custom.min.css" rel="stylesheet"/>
+        <script type="text/javascript" src="/javascripts/jquery-1.9.1.js"></script>
+        <script type="text/javascript" src="/javascripts/jquery-ui-1.10.3.custom.min.js"></script>
+        <script src="/javascripts/jquery.form.js"></script>
+        <script type="text/javascript" src="/javascripts/bootstrap-modalmanager.js"></script>
+        <script type="text/javascript" src="/javascripts/bootstrap-modal.js"></script>
+    </head>
+
+    <body>
+        <div class="modal-alert modal hide fade">
+            <div class="modal-header">
+                <h3>Woops</h3>
+            </div>
+            <div class="modal-body">
+                <p class="text"></p>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" id="ok" class="btn btn-warning">OK</button>
+            </div>
+        </div>
+        <header>
+            <div id='lien_sociaux'>
+                facebook
+            </div>
+
+            <div id='entete'>
+                <h1>Couco</h1>
+
+                <form id="login-form">
+                    <label for='login'>Login:</label><input type='text' name='login'/><br />
+                    <label for='mdp'>Mdp:</label><input type='password' name='mdp'/><br />
+                    <label for='remember-me'>Remember</label><input type="checkbox" id="remember-me"checked>
+                    <input type='submit' value='Connexion'/>
+                </form>
+
+                <nav>
+                    <ul>
+                        <li><a href='#'>Accueil</a></li>
+                        <li><a href='#'>Presentation</a></li>
+                        <li><a href='#'>Contact</a></li>
+                        <li><a id="link_connexion" href='#'>Connexion</a></li>
+                </nav>
+
+            </div>
+        </header>
+
+        {{{body}}}
+
+        <div style='clear:both;'></div>
+
+        <footer>
+            
+        </footer>
+
+    </body>
+</html>

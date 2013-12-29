@@ -1,0 +1,266 @@
+
+body
+{
+	margin: auto;
+}
+
+.centrage
+{
+	width: 1000px;
+	margin: auto;
+}
+
+/*CSS DU MENU*/
+
+#lien_sociaux
+{
+	background-color: #25292c;
+	color: white;
+	height: 40px;
+}
+
+#entete
+{
+	height: 90px;
+	width: 100%;
+	background-color: #323b44;
+	color: white;
+	border-top: 1px solid #414f59;
+}
+
+#entete h1
+{
+	float: left;
+	margin-left: 15%;
+	font-size: 40px;
+}
+
+#entete nav
+{
+	float: right;
+	margin-right: 70px;
+}
+
+#entete nav ul
+{
+	margin: 0;
+ 	padding: 0;
+}
+
+#entete nav ul li
+{
+ float: left;
+ width: 130px;
+ height: 50px;
+ display: block;
+ text-align: center;
+}
+
+#entete nav ul li a
+{
+	display: block;
+	height: 53px;
+	width: 130px;
+	padding-top: 35px;
+	color: white;
+	text-decoration: none;
+}
+
+#entete nav ul li a:hover
+{
+	background-color: #252c34;
+	border-bottom: 4px solid #1789ca;
+}
+
+#entete form
+{
+	float: right;
+	height: 76px;
+	padding-left: 10px;
+	padding-right: 20px;
+	padding-top: 10px;
+	border-left: 1px solid black;
+	background-color: #252c34;
+	border-bottom: 4px solid #1789ca;
+}
+
+#entete form label
+{
+    display: block;
+    width: 80px;
+	float: left;
+}
+
+
+/*CSS SLIDE*/
+
+#slide
+{
+	background-image: url('/images/etudiant.jpg');
+	background-size: contain;
+	height: 485px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#slide_contenu
+{
+	margin-left: 250px;
+	margin-top: 80px;
+	color: #4e5b6b;
+	width: 500px;
+}
+
+#slide_contenu h3
+{
+	background-color: #4e5b6b;
+	box-shadow: 2px 2px 5px black;
+	font-size: 28px;
+	color: white;
+	width: 370px;
+	padding: 5px;
+}
+
+#slide_buttons a
+{
+	float: left;
+	height: 60px;
+	width: 120px;
+	margin-top: 40px;
+	margin-right: 20px;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 1px 1px 3px black;
+	font-weight: bold;
+	font-size: 14px;
+	text-decoration: none;
+	text-align: center;
+	vertical-align: middle;
+	display: inline;
+}
+
+#slide_buttons a:first-child
+{
+	background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0.17, #F2F2F5),
+	color-stop(1, #C7C7C7)
+	);
+	background-image: -o-linear-gradient(bottom, #F2F2F5 17%, #C7C7C7 100%);
+	background-image: -moz-linear-gradient(bottom, #F2F2F5 17%, #C7C7C7 100%);
+	background-image: -webkit-linear-gradient(bottom, #F2F2F5 17%, #C7C7C7 100%);
+	background-image: -ms-linear-gradient(bottom, #F2F2F5 17%, #C7C7C7 100%);
+	background-image: linear-gradient(to bottom, #F2F2F5 17%, #C7C7C7 100%);
+}
+
+#slide_buttons a:first-child:hover
+{
+	color: #1789ca;
+}
+
+#slide_buttons a:nth-child(2)
+{
+	color: white;
+	background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0.21, #33AAEA),
+	color-stop(1, #188ACC)
+	);
+	background-image: -o-linear-gradient(bottom, #33AAEA 21%, #188ACC 100%);
+	background-image: -moz-linear-gradient(bottom, #33AAEA 21%, #188ACC 100%);
+	background-image: -webkit-linear-gradient(bottom, #33AAEA 21%, #188ACC 100%);
+	background-image: -ms-linear-gradient(bottom, #33AAEA 21%, #188ACC 100%);
+	background-image: linear-gradient(to bottom, #33AAEA 21%, #188ACC 100%);
+}
+
+#slide_buttons a:nth-child(2):hover
+{
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.21, #33AAEA),
+	color-stop(1, #188ACC)
+	);
+	background-image: -o-linear-gradient(top, #33AAEA 21%, #188ACC 100%);
+	background-image: -moz-linear-gradient(top, #33AAEA 21%, #188ACC 100%);
+	background-image: -webkit-linear-gradient(top, #33AAEA 21%, #188ACC 100%);
+	background-image: -ms-linear-gradient(top, #33AAEA 21%, #188ACC 100%);
+	background-image: linear-gradient(to top, #33AAEA 21%, #188ACC 100%);
+}
+
+/*CSS de la présenation*/
+#presentation
+{
+	background-color: white;
+	margin-top: 20px;
+	height: 500px;
+}
+
+#presentation h2
+{
+	color: #666666;
+	font-size: 30px;
+}
+
+#presentation .centrage div
+{
+	text-align: center;
+	width: 300px;
+	height: 400px;
+	background-color: #f9f9f9;
+	border: 1px solid #666666;
+	border-bottom: 4px solid #1789ca;
+	float: left;
+	margin-left: 30px;
+}
+
+#img_presentation
+{
+	background: url('/images/slider1.jpg') center 0 no-repeat fixed;
+	height: 300px;
+	padding-top: 50px;
+
+}
+
+#img_presentation .centrage div:first-child
+{
+	margin-left: 100px;
+}
+
+#img_presentation .centrage div
+{
+	float: left;
+	width: 250px;
+	height: 250px;
+	border: 1px solid #666666;
+	margin-left: 30px;
+}
+
+
+#bloc_inscription
+{
+	height: 400px;
+	background-color: #323b44;
+	color: white;
+}
+
+#bloc_inscription label
+{
+	color: white;
+}
+
+
+/*CSS footer*/
+footer
+{
+	background-color: #25292c;
+	border-top: 1px solid #414f59;
+	color: white;
+	height: 40px;
+}

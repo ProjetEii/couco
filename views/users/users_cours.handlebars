@@ -1,0 +1,12 @@
+<form id="cours-search-form-radio">
+Cours Crée mais non commencé<input type="radio" name="radioSearchCours" id="0"></br>
+Cours crée et en cours de modification<input type="radio" name="radioSearchCours" id="1"></br>
+Cours terminé<input type="radio" name="radioSearchCours" id="2"></br>
+</form>
+<form id="cours-search-form-texte">
+	
+<ul id='grid_cours'>
+{{#each cours}}
+	<li id='cours_{{cours_id}}' class="ui-state-default"></span>{{cours_titre}}</li>
+{{/each}}
+</ul>

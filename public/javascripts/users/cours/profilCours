@@ -1,0 +1,72 @@
+      ////////////////////////////////////
+      /// Jquery sur les cours du User.///
+      ////////////////////////////////////
+
+
+        /// Transformation des ligne cours en element jquery
+        $( "#grid_cours" ).sortable();
+        /// Désactivation de la séléction des éléments.
+        $( "#grid_cours" ).disableSelection();
+
+        /// Test des radios et changement de la recherche
+        $("input[type='radio']").click(function() {
+          var statuscours = $(this).attr('id');
+          var ul = document.getElementById("grid_cours");
+
+          $("#grid_cours li").fadeTo("slow", 0.01, function(){ //fade
+             $(this).slideUp("slow", function() { //slide up
+                 $(this).remove(); //then remove from the DOM
+             });
+         });
+
+          $(this).ajaxSubmit({
+                type: 'post',
+                url: 'users_cours_search',
+                data: {statuscours: statuscours},
+                success : function(responseText, status, xhr, $form){
+                    if (status == 'success'){
+                      
+                        if(statuscours == 1) 
+                        {
+                            for (var i = 0; i<responseText.length; i++) {
+                              var li = document.createElement('li');
+                              var img = document.createElement('img');
+                              img.src = "/images/lock_icon.png";
+                              ul.appendChild(li);
+                              li.setAttribute('id',"cours_"+responseText[i].cours_id);
+                              li.setAttribute('class', "ui-state-default");
+                              li.innerHTML = responseText[i].cours_titre;
+                              li.appendChild(img);
+                          }
+                        } else if(statuscours == 2) 
+                        {
+                            for (var i = 0; i<responseText.length; i++) {
+                              var li = document.createElement('li');
+                              var img = document.createElement('img');
+                              img.src = "/images/download_icon.png";
+                              ul.appendChild(li);
+                              li.setAttribute('id',"cours_"+responseText[i].cours_id);
+                              li.setAttribute('class', "ui-state-default");
+                              li.innerHTML = responseText[i].cours_titre;
+                              li.appendChild(img);
+                          }
+                        } else 
+                          {
+                            for (var i = 0; i<responseText.length; i++) {
+                              var li = document.createElement('li');
+                              var img = document.createElement('img');
+                              img.src = "/images/write_icon.png";
+                              ul.appendChild(li);
+                              li.setAttribute('id',"cours_"+responseText[i].cours_id);
+                              li.setAttribute('class', "ui-state-default");
+                              li.innerHTML = li.innerHTML + responseText[i].cours_titre;
+                              li.appendChild(img);
+                            }
+                          }
+                      }                    
+                },
+                error : function(e){
+                    alert(e);
+                }
+            });
+        });

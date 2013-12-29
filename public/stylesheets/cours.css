@@ -1,0 +1,40 @@
+.clear
+{
+	clear: both;
+}
+
+/* CSS de l'index cours */
+
+#listcours_index
+{
+	float: left;
+	height: 650px;
+	width: 400px;
+	margin-left: 150px;
+	margin-top: 40px;
+	background-color: grey;
+}
+
+
+#creationcours_index
+{
+ float: right;
+ height: 650px;
+ width: 500px;
+ margin-top: 40px;
+ margin-right: 200px;
+ background-color: grey;
+}
+
+#creationcours_index h2
+{
+	margin-top: 40px;
+	text-align: center;
+	color: white;	
+}
+
+#creationcours_index form
+{
+	margin-top: 10px;
+	margin-left: 15px;
+}

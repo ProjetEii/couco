@@ -1,0 +1,14 @@
+//// WTF ? ///
+SELECT cours.cours_titre, cours.cours_id, cours.cours_datemaj, COUNT( participe_cours.utilisateur_id ) AS nombre_participants
+FROM cours
+LEFT JOIN participe_cours ON cours.cours_id = participe_cours.cours_id
+WHERE cours.utilisateur_id =3
+AND cours.cours_status = 1 OR cours.cours_status = 2
+
+/// Cours ou l'utilisateur participe ou a participé. //
+SELECT cours.cours_titre, cours.cours_id, cours.cours_datemaj
+FROM cours
+WHERE cours.utilisateur_id =3
+AND cours.cours_status =1
+OR cours.cours_status =2
+

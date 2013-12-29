@@ -1,0 +1,7 @@
+{
+  "user": "root",
+  "password" : "root",
+  "database" : "couco",
+  "host" : "localhost",
+  "port" : 3306
+}

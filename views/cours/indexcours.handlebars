@@ -1,0 +1,134 @@
+<div id='listcours_index'>
+
+	{{#each test}}
+		<div id='cours_{{cours_id}}'>
+			<h4>{{cours_titre}}</h4>
+			<p><a href='#' class='lien_participants'>{{nombre_participants}} Participants</a></p>
+			<button>Participer</button>
+		</div>
+
+	{{else}}
+		<div id='cours_empty'>
+			<h4>Aucun Cours</h4>
+		</div>
+
+	{{/each}}
+
+</div>
+
+
+<div id='creationcours_index'>
+
+	<h2>Ajouter un cours</h2>
+
+	<form>
+		<table>
+			<tr>
+				<td>
+					<input type='text' name='titre_cours' id='titre_cours'/>
+				</td>
+				<td>
+					<input type='button' id='bt_create' value='Créer' />
+				</td>
+			</tr>
+			<tr>
+				<td colspan='2' class='erreur'>
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<div id='invitations_amis'>
+		
+	</div>
+
+</div>
+
+<div class="clear"></div>
+
+<script src='/socket.io/socket.io.js' type='text/javascript'></script>
+<script>
+
+	$(function(){
+		//var socket = io.connect('http://localhost:3000');
+
+		//selection de l'un des cours dans la liste des cours (click simple)
+		$('#listcours_index div').click(function(){
+
+			var id = this.id;
+			var caractere = id.indexOf('_', 1);
+
+			AffichageInvitations(id.substr(caractere + 1));
+
+		});
+
+
+		//affichage des participants lors du passage de la souris sur
+		$('.lien_participants').mouseover(function(){
+
+			var id = $(this).parent().parent().attr('id');
+
+			var caractere = id.indexOf('_', 1);
+
+			//$.get('/list_participants_cours', {idCours: id.substr(caractere + 1)}, function(){
+				//mi en commentaire mais sa fonctionne !! 
+			//});
+
+		});
+
+
+		//fonction appeler lors du clic sur le bouton de création d'un cours
+		$('#bt_create').click(function(){
+
+			var titre_input = $('#titre_cours');
+
+			if(titre_input.val() == '')
+			{
+				$('#creationcours_index .erreur').html('Erreur');
+				titre_input.css('border-color', 'red');
+
+			}else{
+
+
+				//vérification que le titre n'existe pas déjà dans la liste des cours de l'utilisateur (AJAX)
+				var parameters = {titre: titre_input.val() };
+
+				$.post( "/verif_cours", parameters, function() {
+					//si le titre du cours nexiste pas déjà, alors on le créer pour l'utilsiateur connecter
+
+
+					//on l'ajoute automatiquement à la liste des cours sur la gauche
+					
+
+
+				})
+						  .fail(function() {
+						    alert( "error" );
+						    //si le titre du cours existe déjà, alors on affiche une erreur
+						  });
+			}	
+		});
+
+		
+
+		/////////////////////////////////////////////////////////
+		//déclaration des fonctions
+		/////////////////////////////////////////////////////////
+
+		function AffichageInvitations (idCours)
+		{
+
+			$.post("/list_invitations", {id_cours: idCours }, function(data){
+
+
+					$('#invitations_amis').html(data);
+
+				
+			});
+		}
+
+
+	});
+
+</script>
+

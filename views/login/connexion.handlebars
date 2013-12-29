@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<body>
+<div id="headerwrap">
+      <header class="clearfix">
+        <h1><span>Couco!</span></h1>
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <h2>Login !</h2>
+              <form id="login-form">
+              <input type="text" id="login" placeholder="you@yourmail.com" class="cform-text" size="40" title="your email" required><br>
+              <input type="password" id="mdp" placeholder="Mot de passe" class="cform-text" size="40" title="Mot de passe" required>
+              <input type="checkbox" id="remember-me" class="cform-text" checked><label for='remember-me'>Remember-me</label>
+              <input type="submit" id="submit-login" value="Login" class="cform-submit">
+              </form>
+              <a  id="signup" href="/inscription">Creat an account !</a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+</body>
+<div class="modal-alert modal hide fade">
+  <div class="modal-header">
+    <h3></h3>
+  </div>
+  <div class="modal-body">
+    <p class="text"></p>
+  </div>
+  <div class="modal-footer">
+    <button data-dismiss="modal" id="ok" class="btn btn-warning">OK</button>
+  </div>
+</div>
+</html>
+
+<script type="text/javascript" src="/javascripts/login/login.js" ></script>
