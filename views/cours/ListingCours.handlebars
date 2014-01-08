@@ -1,0 +1,13 @@
+			{{#each cours}}
+				<div id='cours_{{cours_id}}'>
+					<h4>{{cours_titre}}</h4>
+					<h5>Createur: {{utilisateur_prenom}} {{utilisateur_nom}}</h5>
+					<button>Participer</button>
+				</div>
+
+			{{else}}
+				<div id='cours_empty'>
+					<h4>Aucun Cours</h4>
+				</div>
+
+			{{/each}}

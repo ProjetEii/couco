@@ -1,46 +1,75 @@
-<div id='listcours_index'>
+<div id="bloc_gauche_index">
+	<div id='listcours_index'>
 
-	{{#each test}}
-		<div id='cours_{{cours_id}}'>
-			<h4>{{cours_titre}}</h4>
-			<p><a href='#' class='lien_participants'>{{nombre_participants}} Participants</a></p>
-			<button>Participer</button>
-		</div>
+			{{#each cours}}
+				<div id='cours_{{cours_id}}'>
+					<h4>{{cours_titre}}</h4>
+					<h5>Createur: {{utilisateur_prenom}} {{utilisateur_nom}}</h5>
+					<button>Participer</button>
+				</div>
 
-	{{else}}
-		<div id='cours_empty'>
-			<h4>Aucun Cours</h4>
-		</div>
+			{{else}}
+				<div id='cours_empty'>
+					<h4>Aucun Cours</h4>
+				</div>
 
-	{{/each}}
+			{{/each}}
 
+	</div>
+
+	<div class='clear'></div>
+
+	<div id='recherche_cours'>
+		<form>
+			<label for="input_recherche_index">Recherche</label>
+			<div>
+				<input type='text' id='input_recherche_index' name='recherche' /> 
+				<img id='bt_sup_recherche' src='/images/icons/cross_recherche.png' />
+			</div>
+
+			<img id='bt_recherche_index' src='/images/icons/loupe.png'/>
+		</form>
+	</div>
 </div>
-
 
 <div id='creationcours_index'>
 
-	<h2>Ajouter un cours</h2>
+	<div id='form_ajout_cours'>
+		<h2>Ajouter un cours</h2>
 
-	<form>
-		<table>
-			<tr>
-				<td>
-					<input type='text' name='titre_cours' id='titre_cours'/>
-				</td>
-				<td>
-					<input type='button' id='bt_create' value='Créer' />
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2' class='erreur'>
-				</td>
-			</tr>
-		</table>
-	</form>
-
-	<div id='invitations_amis'>
-		
+		<form>
+			<table>
+				<tr>
+					<td>
+						<input type='text' name='titre_cours' id='titre_cours'/>
+					</td>
+					<td>
+						<input type='button' id='bt_create' value='Créer' />
+					</td>
+				</tr>
+				<tr>
+					<td colspan='2' class='erreur'>
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
+
+	<div id='tabs_cours'>
+		<ul>
+			<li><a href="#participants_cours">Participants</a></li>
+			<li><a href="#invitations_amis">Invitations</a></li>
+		</ul>
+
+		<div id='participants_cours'>
+			
+		</div>
+
+		<div id='invitations_amis'>
+			 
+		</div>
+	</div>
+
 
 </div>
 
@@ -52,83 +81,191 @@
 	$(function(){
 		//var socket = io.connect('http://localhost:3000');
 
-		//selection de l'un des cours dans la liste des cours (click simple)
-		$('#listcours_index div').click(function(){
+		//gestion du bouton
+		$('#bt_sup_recherche').hide();
 
-			var id = this.id;
-			var caractere = id.indexOf('_', 1);
+		//affichage des tabs
+		$('#tabs_cours').tabs();
 
-			AffichageInvitations(id.substr(caractere + 1));
+		//gestion bt effacer de la recherche
+		$('#bt_sup_recherche').click(function(){
 
-		});
+			visuel_recherche_cours('hide');
 
+			//on réaffiche toute la lsite de l'utilisateur avec une recherche vide
+			$.post("/recherche_cours_index", {recherche: '' }, function(data){
 
-		//affichage des participants lors du passage de la souris sur
-		$('.lien_participants').mouseover(function(){
-
-			var id = $(this).parent().parent().attr('id');
-
-			var caractere = id.indexOf('_', 1);
-
-			//$.get('/list_participants_cours', {idCours: id.substr(caractere + 1)}, function(){
-				//mi en commentaire mais sa fonctionne !! 
-			//});
-
-		});
-
-
-		//fonction appeler lors du clic sur le bouton de création d'un cours
-		$('#bt_create').click(function(){
-
-			var titre_input = $('#titre_cours');
-
-			if(titre_input.val() == '')
-			{
-				$('#creationcours_index .erreur').html('Erreur');
-				titre_input.css('border-color', 'red');
-
-			}else{
-
-
-				//vérification que le titre n'existe pas déjà dans la liste des cours de l'utilisateur (AJAX)
-				var parameters = {titre: titre_input.val() };
-
-				$.post( "/verif_cours", parameters, function() {
-					//si le titre du cours nexiste pas déjà, alors on le créer pour l'utilsiateur connecter
-
-
-					//on l'ajoute automatiquement à la liste des cours sur la gauche
-					
-
-
-				})
-						  .fail(function() {
-						    alert( "error" );
-						    //si le titre du cours existe déjà, alors on affiche une erreur
-						  });
-			}	
-		});
-
-		
-
-		/////////////////////////////////////////////////////////
-		//déclaration des fonctions
-		/////////////////////////////////////////////////////////
-
-		function AffichageInvitations (idCours)
-		{
-
-			$.post("/list_invitations", {id_cours: idCours }, function(data){
-
-
-					$('#invitations_amis').html(data);
-
-				
+				$('#listcours_index').html(data);
+				//on redéclare les évenements des cours
+				event_list_cours();
 			});
-		}
 
+		});
+
+		//affichage et gestion bt de recherche
+	    $( "#bt_recherche_index" ).click(function(){
+
+	    	//recuperation de la valeur entrée
+	    	var input_recherche = $('#input_recherche_index');
+
+	    	if(input_recherche.val() != '')
+	    	{	
+	    		//appel de la fonction executant la recherche
+	    		recherche_cours(input_recherche);
+
+	    		visuel_recherche_cours('show');
+
+		    }else{
+
+		    	input_recherche.css('border', '1px solid red');
+
+		    }
+	    });
+
+		//gestion des touches ENTREE sur les formulaires
+
+		//déclaration des évenement de la liste de cours
+		event_list_cours();
+
+		//gestion de l'ajout du cours
+		click_ajout_cours();
 
 	});
+
+
+////////////////////////////////////////////////////////////////
+//fonction permettant la gestion visuel de la zone de recherche
+///////////////////////////////////////////////////////////////
+function visuel_recherche_cours(action)
+{
+	if(action == 'hide')
+	{
+		$('#input_recherche_index').val('');
+		$('#input_recherche_index').css('border-right', 'none');
+		$('#input_recherche_index').css('width', '100%');
+
+		$('#bt_sup_recherche').hide();
+
+	}else{
+
+		$('#input_recherche_index').css('border-right', '1px solid #bbb');
+		$('#input_recherche_index').css('width', '145px');
+
+		$('#bt_sup_recherche').show();
+	}
+}
+
+////////////////////////////////////////////////
+//fonction permettant d'effectuer une recherche
+///////////////////////////////////////////////
+function recherche_cours(input_recherche)
+{
+	//on enléve les erreurs précedente s'il y en a
+	input_recherche.css('border', 'none');
+
+	//recherche et affichage des résultat
+	$.post("/recherche_cours_index", {recherche: input_recherche.val() }, function(data){
+
+		$('#listcours_index').html(data);
+
+		//on redéclare les évenements des cours
+		event_list_cours();
+
+	});
+}
+
+
+////////////////////////////////////////////////
+//fonction permettant de gérer le cours selctionner
+///////////////////////////////////////////////
+function cours_selected(id)
+{
+	$("#listcours_index div").removeClass("cours_selected");
+
+ 	$("#" + id).addClass("cours_selected");
+}
+
+
+/////////////////////////////////////////////////
+//fonction permettant de gerer les evenement de la liste des cours (utilisation après l'ajax églament)
+/////////////////////////////////////////////////
+function event_list_cours()
+{
+	//selection de l'un des cours dans la liste des cours (click simple)
+	$('#listcours_index div').click(function(){
+
+		var id = this.id;
+
+		//modification de la couleur du cours selectionner
+		cours_selected(id);
+
+
+		var caractere = id.indexOf('_', 1);
+
+		//recherche et afficahge des invitations
+		$.post("/list_invitations", {id_cours: id.substr(caractere + 1) }, function(data){
+
+				$('#invitations_amis').html(data);
+		});
+
+		//Afficchage des participants
+		$.post("/list_participants_cours", {id_cours: id.substr(caractere + 1) }, function(data){
+
+				$('#participants_cours').html(data);
+		});
+
+	});
+}
+
+
+/////////////////////////////////////////////////////
+//fonction appeller lors du click sur le bouton ajouter un cours
+////////////////////////////////////////////////////////////
+function click_ajout_cours()
+{
+	$('#bt_create').click(function(){
+
+	var titre_input = $('#titre_cours');
+
+	if(titre_input.val() == '')
+	{
+		$('#creationcours_index .erreur').html('Erreur');
+		titre_input.css('border-color', 'red');
+
+	}else{
+
+
+		//vérification que le titre n'existe pas déjà dans la liste des cours de l'utilisateur (AJAX)
+		var parameters = {titre: titre_input.val(), user_id: 1 };
+
+		$.post( "/verif_cours", parameters, function() {
+
+			//on enléve les erreurs précedente s'il y en a
+    		titre_input.css('border-color', 'transparent');
+
+			//si le titre du cours nexiste pas déjà, alors on le créer pour l'utilsiateur connecter
+			$.post("/ajout_cours", parameters, function(data){
+
+				$('#listcours_index').html(data);
+
+				//aprés l'ajax, on redéclare les évenements
+				event_list_cours();
+
+			})
+
+			.fail(function(){
+				alert('erreur');
+			})
+
+		})
+		  .fail(function() {
+		    //si le titre du cours existe déjà, alors on affiche une erreur
+		    $('#creationcours_index .erreur').html('Cours déjà existant');
+				titre_input.css('border-color', 'red');
+		  });
+			}	
+	});
+}
 
 </script>
 

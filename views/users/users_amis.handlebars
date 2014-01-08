@@ -1,8 +1,34 @@
-<form id="users-search-form">
-ID USER<input type="text" name="searchUserId">
-MAIL USER<input type="mail" name="searchUserMail">
-</form>
-
-<ul id='grid_friends'>
-
-</ul>
+<script type="text/javascript" src="/javascripts/users/friend/profilFriend.js" ></script>
+<script type="text/javascript" src="/javascripts/jquery.typing-0.2.0.min.js" ></script>
+<div id="accordion_friend">
+	<h3>Recherche d'Amis</h3>
+	<div>
+			<input type="text" id="search_input" name="search">
+			
+		<ul id='grid_friends'>
+		</ul>
+	</div>
+</div>
+<div id="myfriend">
+	<div id="userStats_mini" class="clearfix">
+                <div class="pic_mini">
+                    <a href="#"><img src="/images/users/{{utilisateur_id}}/{{utilisateur_avatar}}" width="60" height="60"/></a>
+                </div>
+                
+                <div class="data_mini">
+                    <h1 class="profilh1_mini">COUCOU TEST (Id: 9999)</h1>
+                    <h3 class="profilh3_mini">BTS IG</h3>
+                    <h4 class="profilh4_mini">De la Vie, Vie la De</h4>
+                    <div class="socialMediaLinks_mini">
+                        <a href="http://www.google.fr" rel="me" target="_blank"><img src="images/facebook.png" alt="@jakerocheleau" /></a>
+                        <a href="http://twitter.com/jakerocheleau" rel="me" target="_blank"><img src="images/twitter.png" /></a>
+                    </div>
+                    <div class="sep_mini"></div>
+                    <ul class="numbers_mini clearfix">
+                        <li>Cours Fini<strong id="cptCours2_mini">17</strong></li>
+                        <li>Amis<strong id="cptFriends2_mini">25</strong></li>
+                        <li class="nobrdr_mini">Test<strong>127</strong></li>
+                    </ul>
+                </div>
+            </div>
+</div>

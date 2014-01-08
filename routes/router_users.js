@@ -1,4 +1,5 @@
 var UM = require('../tools/usersManager.js');
+var FM = require('../tools/friendManager.js')
 var CM = require('../tools/cours.js')
 var EM = require('../tools/email-dispatcher');
 
@@ -61,7 +62,7 @@ app.post('/users_cours_search', function(req, res) {
 			res.render('index');
 	}	
 	else{
-		CM.ListingCours(req.cookies.id_user, req.body.statuscours, function(e, o) {
+		CM.ListingCoursByStatus(req.cookies.id_user, req.body.statuscours, function(e, o) {
 		if(e == true){
 				res.send(400, e);
 
@@ -74,13 +75,41 @@ app.post('/users_cours_search', function(req, res) {
 
 	});
 
-app.get('/users_amis', function(req, res) {
+app.get('/users_friend', function(req, res) {
 if (req.cookies.user == undefined || req.cookies.mdp == undefined){
 			res.render('index');
 	}	
 	else{
 		res.render('users/users_amis', { layout: 'main_users'});
 }
+});
+
+
+app.post('/users_friend_search', function(req, res) {
+if (req.cookies.user == undefined || req.cookies.mdp == undefined){
+			res.render('index');
+	}	
+	else if(typeof req.body.search == 'undefined'){
+		FM.getFriendsByIdUser(req.cookies.id_user, function(e,o) {
+			if(e != true){
+				res.send(400, e);
+
+			}else{
+				res.send(200, o);
+			}
+		});
+	}
+	else {
+		console.log(req.body.search);
+		FM.searchFriend(req.body.search, req.cookies.id_user, function(e,o) {
+			if(e != true){
+				res.send(400, o);
+
+			}else{
+				res.send(200, o);
+			}
+		});
+		}
 });
 
 }

@@ -1,5 +1,6 @@
 var cours = require('../tools/cours.js');
-
+var user = require('../tools/users.js');
+var participant = require('../tools/participants.js');
 
 
 
@@ -24,7 +25,7 @@ module.exports = function(app){
 		//pensé à mettre la session à la place du chiffre
 		cours.ListingCours(1, function(err, result){
 
-		res.render('cours/indexcours', {test: result});
+		res.render('cours/indexcours', {cours: result});
 
 		});
 	});
@@ -35,7 +36,7 @@ module.exports = function(app){
 	///////////////////////////////////////////////////////
 	app.post('/verif_cours', function(req, res){
 
-		cours.VerifAjoutCours(req.body.titre, function(e) {
+		cours.VerifAjoutCours(req.body.titre, req.body.user_id, function(e) {
 
 			if(e == true){
 				res.send(200);
@@ -48,9 +49,62 @@ module.exports = function(app){
 	});
 
 
+
+	////////////////////////////////////////////////////////
+	//fonction permettant l'ajout d'un cours en BDD
+	///////////////////////////////////////////////////////
+	app.post('/ajout_cours', function(req, res){
+
+		//ajout du cours en BDD
+		cours.AjoutCours(req.body.titre, req.body.user_id, function(e){
+
+			if(e == true)
+			{
+				//recupération de l'id du cours créer
+				cours.InfoCours(req.body.titre, req.body.user_id, function(result){
+
+					if(result != null)
+					{
+						//ajout de l'utilisateur en tant que participants au cours
+						participant.AjoutParticipant(result[0].cours_id, req.body.user_id, function(result2){
+
+							if(result2 == true)
+							{
+									//listing des cours après ajout, avec mise en valeur du dernier ajouter
+									cours.ListingCours(req.body.user_id, function(err, result){
+
+										res.render('cours/ListingCours', {layout: false, cours: result, id: result[0].cours_id });
+
+									});
+
+							}else{
+								res.send(400);
+
+							}
+						});
+
+					}else{
+
+						res.send(400);
+					}
+
+				});
+
+			}else{
+
+				res.send(400);
+
+			}
+
+		});
+
+	});
+
+
 	////////////////////////////////////////////////////////
 	//listing des cours de l'utilisateur
 	////////////////////////////////////////////////////////
+	/*
 	app.post('/liste_cours', function(req, res){
 
 		//pensé à mettre la session à la place du chiffre
@@ -67,6 +121,19 @@ module.exports = function(app){
 
 		});
 
+	});*/
+
+
+	//////////////////////////////////////////////////////////
+	//recherche dans la liste des cours de l'utilsiateur
+	//////////////////////////////////////////////////////////
+	app.post('/recherche_cours_index', function(req, res){
+
+		cours.RechercheCoursIndex(req.body.recherche, 1, function(err, result){
+
+			res.render('cours/ListingCours', {layout: false, cours: result});
+
+		});
 	});
 
 

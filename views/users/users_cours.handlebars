@@ -1,12 +1,30 @@
+<script type="text/javascript" src="/javascripts/users/cours/profilCours.js" ></script>
 <form id="cours-search-form-radio">
-Cours Crée mais non commencé<input type="radio" name="radioSearchCours" id="0"></br>
-Cours crée et en cours de modification<input type="radio" name="radioSearchCours" id="1"></br>
+Cours Crée mais non commencé<input type="radio" name="radioSearchCours" id="0"> 
+Cours crée et en cours de modification<input type="radio" name="radioSearchCours" id="1"> 
 Cours terminé<input type="radio" name="radioSearchCours" id="2"></br>
 </form>
 <form id="cours-search-form-texte">
-	
-<ul id='grid_cours'>
-{{#each cours}}
-	<li id='cours_{{cours_id}}' class="ui-state-default"></span>{{cours_titre}}</li>
-{{/each}}
-</ul>
+</br></br></br>
+<div class="grid_cours_class" style="width:600px;height:150px;">	
+	<table id="table_cours">
+		<tr id="table_titre"> 
+			<td>
+			Titre
+			</td>
+			<td >
+			Date de Création
+			</td>
+			<td>
+			Actions
+			</td>
+		</tr>
+	{{#each cours}}
+	<tr id="cours">
+		<td id='cours_{{cours_id}}'>{{cours_titre}}</td>
+		<td >{{cours_datecreate}}</td>
+		<td><img src="/images/download_icon.png"</img></td>
+	</tr>
+	{{/each}}
+	</table>
+</div>

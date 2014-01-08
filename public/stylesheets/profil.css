@@ -58,7 +58,7 @@ nav { width: auto; background: #eee; height: 45px; border-bottom: 1px solid #dad
 #right .gcontent { display: block; margin-bottom: 20px; }
 #right .gcontent .head { background: #589fc6; border: 1px solid #3e82a7; padding-left: 8px; }
 #right .gcontent .head h1 { color: #fafcfd; font-weight: bold; font-size: 1.4em; }
-
+#leftdiv { float: left; }
 #right .gcontent .boxy { border-radius: 0px 0px 5px 5px; border: 1px solid #ccc; border-top: 0px; padding: 10px 8px; background: #f9f9f9; }
 
 #right .gcontent .boxy .badgeCount { margin-bottom: 30px;  }
@@ -79,7 +79,7 @@ html[xmlns] .clearfix { display: block; }
 
 .nobrdr { border: 0px !important; }
 
-#grid_cours {
+/*#grid_cours {
 	list-style-type: none; 
 	margin: 0; 
 	padding: 0; 
@@ -97,4 +97,109 @@ html[xmlns] .clearfix { display: block; }
     font-weight: bold;
     font-size: 0.8em;
     color: white;
+}
+*/
+
+/* CSS DU VIGNETTE PROFIL*/
+#myfriend { display: block; float: left; overflow: hidden; border: 1px solid #ccc; }
+#userStats_mini { display: block; width: auto; background-color: #f9f9f9; border: 1px solid #ccc; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; padding: 12px; }
+
+#userStats_mini .pic_mini { float: left; display: block; margin-right: 10px; }
+#userStats_mini .pic_mini a img { padding: 7px; background: #fff; border: 1px solid #ccc; }
+
+#userStats_mini .data_mini { float: left; display: block; position:  relative; width: 350px; height: 166px; padding: 4px; padding-left: 15px; background: #e6e6e6; overflow:  hidden; box-sizing: border-box; -moz-box-sizing: border-box; }
+#userStats_mini .data_mini h1 { color: #474747; line-height: 1.6em; text-shadow: 0px 1px 1px #fff; }
+#userStats_mini .data_mini h3 { color: #666; line-height: 0.9em; margin-bottom: 5px; }
+#userStats_mini .data_mini h4 { font-size: 1.2em; line-height: 1.3em; }
+
+#userStats_mini .data_mini .socialMediaLinks_mini { position: absolute; right: 6px; top: 8px; }
+#userStats_mini .data_mini .socialMediaLinks_mini a img { margin-right: 5px; }
+
+#userStats_mini .data_mini .sep_mini { clear: both; margin-top: 40px; width: 320px; height: 1px; border-bottom: 1px solid #ccc; margin-bottom: 0; }
+#userStats_mini .data_mini ul.numbers_mini { list-style: none; width: 320px; padding-top: 7px; margin-top: 0; border-top: 1px solid #fff; color: #676767; }
+#userStats_mini .data_mini ul.numbers_mini li { width: 95px; float: left; display: block; padding-left: 8px; height: 50px; border-right: 1px dotted #bbb; text-transform: uppercase; }
+#userStats_mini .data_mini ul.numbers_mini li strong { color: #434343; display: block; font-size: 3.4em; line-height: 1.1em; font-weight: bold; }
+
+.grid_cours_class {
+    margin:0px;padding:0px;
+    width:100%;
+    box-shadow: 10px 10px 5px #888888;
+    border:1px solid #000000;
+    -moz-border-radius-bottomleft:9px;
+    -webkit-border-bottom-left-radius:9px;
+    border-bottom-left-radius:9px;
+    -moz-border-radius-bottomright:9px;
+    -webkit-border-bottom-right-radius:9px;
+    border-bottom-right-radius:9px;
+    -moz-border-radius-topright:9px;
+    -webkit-border-top-right-radius:9px;
+    border-top-right-radius:9px;
+    -moz-border-radius-topleft:9px;
+    -webkit-border-top-left-radius:9px;
+    border-top-left-radius:9px;
+}.grid_cours_class table{
+    width:100%;
+    height:100%;
+    margin:0px;padding:0px;
+}.grid_cours_class tr:last-child td:last-child {
+    -moz-border-radius-bottomright:9px;
+    -webkit-border-bottom-right-radius:9px;
+    border-bottom-right-radius:9px;
+}.grid_cours_class table tr:first-child td:first-child {
+    -moz-border-radius-topleft:9px;
+    -webkit-border-top-left-radius:9px;
+    border-top-left-radius:9px;
+}.grid_cours_class table tr:first-child td:last-child {
+    -moz-border-radius-topright:9px;
+    -webkit-border-top-right-radius:9px;
+    border-top-right-radius:9px;
+}.grid_cours_class tr:last-child td:first-child{
+    -moz-border-radius-bottomleft:9px;
+    -webkit-border-bottom-left-radius:9px;
+    border-bottom-left-radius:9px;
+}.grid_cours_class tr:hover td{
+    background-color:#82c0ff;
+    background:-o-linear-gradient(bottom, #82c0ff 5%, #56aaff 100%);    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #82c0ff), color-stop(1, #56aaff) );
+    background:-moz-linear-gradient( center top, #82c0ff 5%, #56aaff 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#82c0ff", endColorstr="#56aaff");  background: -o-linear-gradient(top,#82c0ff,56aaff);
+}.grid_cours_class tr:first-child td{
+    background:-o-linear-gradient(bottom, #0069d3 5%, #007fff 100%);    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #0069d3), color-stop(1, #007fff) );
+    background:-moz-linear-gradient( center top, #0069d3 5%, #007fff 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#0069d3", endColorstr="#007fff");  background: -o-linear-gradient(top,#0069d3,007fff);
+    background-color:#0069d3;
+    border:0px solid #000000;
+    text-align:center;
+    border-width:0px 0px 1px 1px;
+    font-size:18px;
+    font-family:Comic Sans MS;
+    font-weight:bold;
+    color:#ffffff;
+}.CSSTableGenerator tr:first-child:hover td{
+    background:-o-linear-gradient(bottom, #0069d3 5%, #007fff 100%);    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #0069d3), color-stop(1, #007fff) );
+    background:-moz-linear-gradient( center top, #0069d3 5%, #007fff 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#0069d3", endColorstr="#007fff");  background: -o-linear-gradient(top,#0069d3,007fff);
+    background-color:#0069d3;
+}.grid_cours_class tr:first-child td:first-child{
+    border-width:0px 0px 1px 0px;
+}.grid_cours_class tr:first-child td:last-child{
+    border-width:0px 0px 1px 1px;
+}.grid_cours_class td{
+    background:-o-linear-gradient(bottom, #56aaff 5%, #82c0ff 100%);    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #56aaff), color-stop(1, #82c0ff) ); 
+    background:-moz-linear-gradient( center top, #56aaff 5%, #82c0ff 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#56aaff", endColorstr="#82c0ff");  background: -o-linear-gradient(top,#56aaff,82c0ff);
+    background-color:#56aaff;
+    border:1px solid #000000;
+    border-width:0px 1px 1px 0px;
+    text-align:left;
+    padding:7px;
+    font-size:12px;
+    font-family:Comic Sans MS;
+    font-weight:bold;
+    color:#000000;
+}.grid_cours_class tr:last-child td{
+    border-width:0px 1px 0px 0px;
+}.grid_cours_class tr td:last-child{
+    border-width:0px 0px 1px 0px;
+}.grid_cours_class tr:last-child td:last-child{
+    border-width:0px 0px 0px 0px;
 }

@@ -8,17 +8,17 @@
                 </div>
                 
                 <div class="data">
-                    <h1 class="profilh1">{{utilisateur_prenom}} {{utilisateur_nom}}</h1>
+                    <h1 class="profilh1">{{utilisateur_prenom}} {{utilisateur_nom}} (Id: {{utilisateur_id}})</h1>
                     <h3 class="profilh3">{{filiere_libelle}}</h3>
                     <h4 class="profilh4">{{ecole_libelle}}, {{ecole_ville}}</h4>
                     <div class="socialMediaLinks">
-                        <a href="http://twitter.com/jakerocheleau" rel="me" target="_blank"><img src="images/twitter.png" alt="@jakerocheleau" /></a>
-                        <a href="http://gowalla.com/users/JakeRocheleau" rel="me" target="_blank"><img src="images/gowalla.png" /></a>
+                        <a href="http://www.google.fr" rel="me" target="_blank"><img src="images/facebook.png" alt="@jakerocheleau" /></a>
+                        <a href="http://twitter.com/jakerocheleau" rel="me" target="_blank"><img src="images/twitter.png" /></a>
                     </div>
                     <div class="sep"></div>
                     <ul class="numbers clearfix">
-                        <li>Cours Fini<strong>17</strong></li>
-                        <li>Amis<strong>25</strong></li>
+                        <li>Cours Fini<strong id="cptCours2">17</strong></li>
+                        <li>Amis<strong id="cptFriends2">25</strong></li>
                         <li class="nobrdr">Test<strong>127</strong></li>
                     </ul>
                 </div>
@@ -26,11 +26,20 @@
             
             <h1>About Me:</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <h1>Mon école</h1>
+            <p>{{ecole_libelle}} - {{ecole_ville}} </p>
+            <p>{{ecole_adresse}}, {{ecole_cp}} </p>
+           
+
+            <h1>Mon cursus</h1>
+            <p>{{filiere_libelle}}</p>
+            
         </section>
         {{/infoprofil}}
         <section id="right">
             <div class="gcontent">
-                <div class="head"><h1>Derniers cours fini</h1></div>
+                <div class="head"><h1 id='leftdiv'>Cours terminés</h1><h1 id="cptcours"></h1></div>
                 <div class="boxy">
                     
                     <div id="coursCount">
@@ -44,32 +53,9 @@
             <div class="gcontent">
                 <div class="head"><h1>Friends List</h1></div>
                 <div class="boxy">
-                    <p>Your friends - 106 total</p>
+                    <p id='cptFriends'></p>
                     
-                    <div class="friendslist clearfix">
-                        <div class="friend">
-                            <a href="#"><img src="images/friend_avatar_default.jpg" width="30" height="30" alt="Jerry K." /></a><span class="friendly"><a href="#">Jerry K.</a></span>
-                        </div>
-                        
-                        <div class="friend">
-                            <a href="#"><img src="images/friend_avatar_default.jpg" width="30" height="30" alt="Katie F." /></a><span class="friendly"><a href="#">Katie F.</a></span>
-                        </div>
-                        
-                        <div class="friend">
-                            <a href="#"><img src="images/friend_avatar_default.jpg" width="30" height="30" alt="Ash K." /></a><span class="friendly"><a href="#">Ash K.</a></span>
-                        </div>
-                        
-                        <div class="friend">
-                            <a href="#"><img src="images/friend_avatar_default.jpg" width="30" height="30" alt="Sponge B." /></a><span class="friendly"><a href="#">Sponge B.</a></span>
-                        </div>
-                        
-                        <div class="friend">
-                            <a href="#"><img src="images/friend_avatar_default.jpg" width="30" height="30" alt="Frank" /></a><span class="friendly"><a href="#">Frank</a></span>
-                        </div>
-                        
-                        <div class="friend">
-                            <a href="#"><img src="images/friend_avatar_default.jpg" width="30" height="30" alt="Alexa S." /></a><span class="friendly"><a href="#">Alexa S.</a></span>
-                        </div>
+                    <div id="friendsCount" class="friendslist clearfix">
                     </div>
                     
                     <span><a href="#">See all...</a></span>
